@@ -1,0 +1,154 @@
+---
+title: Integrations and Extensions
+description: Connect Oleg Dudaev with third-party tools and services to enhance your documentation workflow.
+---
+
+## Overview
+
+Enhance your Oleg Dudaev documentation workflow by integrating with popular third-party tools. You can set up webhooks for real-time notifications, access the API for custom automations, and handle exports or imports seamlessly. These integrations help you sync content with GitHub, Slack, Zapier, and more.
+
+<Callout kind="tip">
+  Start with webhooks for simple notifications, then explore API access for advanced customizations.
+</Callout>
+
+## Popular Integrations
+
+Discover ready-to-use integrations that streamline your workflow.
+
+<Columns cols={3}>
+  <Card title="GitHub" icon="github" href="https://github.com" target="_blank">
+    Sync documentation changes with your repositories. Push updates directly from Oleg Dudaev.
+  </Card>
+  <Card title="Slack" icon="message-circle" href="https://slack.com" target="_blank">
+    Receive notifications for page updates and reviews in your Slack channels.
+  </Card>
+  <Card title="Zapier" icon="zap" href="https://zapier.com" target="_blank">
+    Connect to 5000+ apps without coding. Automate workflows like content backups.
+  </Card>
+</Columns>
+
+## Webhook Configurations
+
+Set up webhooks to trigger actions on events like page updates or new comments.
+
+<Steps>
+  <Step title="Create Webhook" icon="settings">
+    Navigate to your project settings in Oleg Dudaev dashboard at `https://dashboard.example.com`.
+    
+    Select **Integrations > Webhooks** and click **New Webhook**.
+  </Step>
+  <Step title="Configure Endpoint" icon="link">
+    Enter your endpoint URL, such as `https://your-webhook-url.com/webhook`.
+    
+    Choose events: `page.updated`, `comment.created`.
+  </Step>
+  <Step title="Test and Save" icon="play">
+    Send a test payload and verify receipt.
+    
+````javascript
+// Example test payload
+{
+  "event": "page.updated",
+  "page_id": "doc-123",
+  "timestamp": "2024-01-15T10:30:00Z"
+}
+````
+
+    Save the webhook.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="Node.js,Python">
+````javascript
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+app.post('/webhook', (req, res) => {
+  console.log('Received:', req.body);
+  // Handle Oleg Dudaev webhook
+  res.status(200).send('OK');
+});
+
+app.listen(3000);
+````
+````python
+from flask import Flask, request, jsonify
+app = Flask(__name__)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.json
+    print('Received:', data)
+    # Handle Oleg Dudaev webhook
+    return jsonify({'status': 'OK'}), 200
+
+if __name__ == '__main__':
+    app.run(port=3000)
+````
+</CodeGroup>
+
+## API Access for Custom Tools
+
+Build custom integrations using the Oleg Dudaev API at `https://api.example.com/v1`.
+
+<ParamField path="project/{projectId}/pages" param-type="GET" required="true">
+  Retrieve all pages in a project. Replace `{projectId}` with your ID.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer `{YOUR_API_KEY}`.
+</ParamField>
+
+<Callout kind="alert">
+  Store your API key securely. Never expose it in client-side code.
+</Callout>
+
+```javascript
+const response = await fetch('https://api.example.com/v1/project/myproject/pages', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  }
+});
+const pages = await response.json();
+console.log(pages);
+```
+
+## Export and Import Options
+
+Manage content portability with built-in export and import features.
+
+<Tabs>
+  <Tab title="Markdown Export" icon="download">
+    Export your documentation as Markdown files.
+    
+    ```bash
+    curl -H "Authorization: Bearer YOUR_API_KEY" \
+         https://api.example.com/v1/project/myproject/export/markdown \
+         -o docs.zip
+    ```
+    
+    Unzip and commit to your Git repo.
+  </Tab>
+  <Tab title="JSON Import" icon="upload">
+    Import structured data from JSON.
+    
+    ```bash
+    curl -X POST https://api.example.com/v1/project/myproject/import/json \
+         -H "Authorization: Bearer YOUR_API_KEY" \
+         -F "file=@import.json"
+    ```
+  </Tab>
+</Tabs>
+
+<Expandable title="Advanced Webhook Events" default-open="false">
+  Available events include:
+  
+  | Event            | Description                  |
+  |------------------|------------------------------|
+  | `page.created`  | New page added              |
+  | `page.deleted`  | Page removed                |
+  | `user.invited`  | Collaborator added          |
+  
+  Customize payloads in project settings.
+</Expandable>

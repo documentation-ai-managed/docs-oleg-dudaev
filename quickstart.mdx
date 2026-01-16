@@ -1,0 +1,116 @@
+---
+title: Getting Started
+description: Set up your Oleg Dudaev account and create your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+<Callout kind="info">
+- A modern web browser like Chrome, Firefox, or Safari
+- An email address for account verification
+- Optional: GitHub account for repository integration
+</Callout>
+
+<Callout kind="tip">
+Review our [system requirements](/docs/system-requirements) if you plan advanced integrations.
+</Callout>
+
+## Sign Up for Your Account
+
+Create your Oleg Dudaev account in under 2 minutes.
+
+<Steps>
+  <Step title="Visit the Dashboard" icon="monitor">
+    Navigate to [https://app.olegdudaev.com](https://app.olegdudaev.com) and click **Sign Up**.
+  </Step>
+
+  <Step title="Enter Details" icon="user">
+    Provide your email, full name, and a strong password. Accept the terms of service.
+  </Step>
+
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification link from `no-reply@olegdudaev.com` and click it.
+  </Step>
+</Steps>
+
+## Complete the Initial Setup Wizard
+
+After verification, the wizard guides you through personalization.
+
+<Tabs>
+  <Tab title="Personal Settings" icon="settings">
+    Select your preferred language and time zone. Enable two-factor authentication for security.
+  </Tab>
+
+  <Tab title="Team Setup" icon="users">
+    Invite team members by email or skip for solo use. Set workspace permissions.
+  </Tab>
+
+  <Tab title="Integrations" icon="plug">
+    Connect GitHub or Slack optionally. Use `YOUR_GITHUB_TOKEN` for repo sync.
+  </Tab>
+</Tabs>
+
+## Create Your First Documentation Space
+
+Build your first project with a simple template.
+
+<Steps>
+  <Step title="New Project" icon="plus">
+    Click **New Space** from the dashboard. Name it `My Project Docs` and select **Blank Template**.
+  </Step>
+
+  <Step title="Add First Page" icon="file-text">
+    Create `introduction.mdx`. Use this starter content:
+    
+    <CodeGroup tabs="MDX,YAML">
+    ````mdx
+    ---
+    title: Welcome
+    description: Project overview
+    ---
+    
+    ## Overview
+    
+    Start writing here.
+    ````
+    
+    ```yaml
+    title: Welcome
+    description: Project overview
+    ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Publish" icon="globe">
+    Hit **Publish** to generate a live URL like `https://docs.olegdudaev.com/my-project-docs`.
+  </Step>
+</Steps>
+
+## Interface Tour
+
+Familiarize yourself with the core dashboard areas.
+
+<Columns cols={3}>
+  <Card title="Editor" icon="edit-3" href="#editor">
+    Write MDX with live preview and syntax highlighting.
+  </Card>
+
+  <Card title="Spaces" icon="layout" href="#spaces">
+    Manage multiple documentation projects.
+  </Card>
+
+  <Card title="Settings" icon="settings">
+    Configure themes, SEO, and custom domains.
+  </Card>
+</Columns>
+
+## Next Steps
+
+<Callout kind="success">
+Explore advanced features like custom themes or API integrations in our [Authentication guide](/docs/authentication).
+</Callout>
+
+Your first space is live! Customize it with components like `<Callout>` for notices or `<Steps>` for guides. For help, visit the [Help Center](/docs/help-center).
